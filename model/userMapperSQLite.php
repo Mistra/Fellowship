@@ -1,5 +1,9 @@
 <?php
 
+interface mapper {
+  function __construct();
+}
+
 class userMapperSQLite implements userMapper {
   function __construct() {
     $this->file_db = new PDO('sqlite:messaging.sqlite3');
@@ -24,9 +28,10 @@ class userMapperSQLite implements userMapper {
   }
 
   public function load($id) {
-    $result = $this->file_db->prepare('SELECT * FROM user');
-    $result->execute();
-    $result = $result->fetch(PDO::FETCH_ASSOC);
+    $stmt = $this->file_db->prepare('SELECT * FROM user 
+                                     WHERE (id = ?)');
+    $stmt->execute(array($id));
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
   }
 

@@ -18,40 +18,59 @@ class userCollectionFactory {
   }
 }
 
-class userCollection {
-  function __construct(userMapper $mapper) {
+class collection {
+  function __construct($mapper) {
     $this->_mapper = $mapper;
   }
-  
-  function save($user) {
-    $id = $this->_mapper->save($user->getFields());
-    $user->setId((int)$id);
-    return $id;
+
+  function save($object) {
+    $id = $this->_mapper->save($object->getFields());
+    $object->setId((int)$id);
+    return $object;
   }
 
-  function load($id) {
-    $data = $this->_mapper->load($id);
-    $user = new user($data["name"],
-		     $data["surname"],
-		     $data["age"]);
-    $user->setId($data["id"]);
-    return $user;
+  function find($id) {
+    
+  }
+
+  function findAll() {
+    $data = $this->_mapper->loadAll();      
+    return $data;
+  }
+  
+  function update($id) {
+
   }
 
   function delete($id) {
     $this->_mapper->delete($id);
   }
 
-  function findAll() {
-    $data = $this->_mapper->loadAll();
-    return $data;
-  }
-
   protected $_mapper;
 }
 
-class collector {
-  function __construct($mapper) {
-    $this->_mapper = $mapper;
+class userCollection extends collection {
+
+  private function toUser($data) {
+    $user = new user($data["name"],
+		     $data["surname"],
+		     $data["age"]);
+    $user->setId($data["id"]);
+    return $user;
+  }
+  
+  function find($id) {
+    $data = $this->_mapper->load($id);
+    return $this->toUser($data);
+  }
+
+  function findAll() {
+    $data = $this->_mapper->loadAll();
+    $userArray = array();
+    foreach ($data as $userData) {
+      $userArray[] = $this->toUser($userData);
+    }
+    return $userArray;
   }
 }
+
