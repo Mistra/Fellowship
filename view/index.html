@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="view/main.css">
-    <link rel="stylesheet" type="text/css" href="view/menu.css">
+    <link rel="stylesheet" type="text/css" href="http://fellowship/view/main.css">
+    <link rel="stylesheet" type="text/css" href="http://fellowship/view/menu.css">
   </head>
   <body>
     <div id='headmenu'>
@@ -28,8 +28,8 @@
 	<td><?=$user->getId()?></td>
 	<td><?=$user->getName()?></td>
 	<td><?=$user->getSurname()?></td>
-	<td><?=$user->getId()?></td>
-	<td><a href="dashboard/deleteUser/<?=$user->getId()?>">delete</a></td>
+	<td><?=$user->getAge()?></td>
+	<td><a href="http://fellowship/dashboard/deleteUser/<?=$user->getId()?>">delete</a></td>
       </tr>
       <?php endforeach ?>
     </table>

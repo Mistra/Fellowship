@@ -14,23 +14,19 @@ class dashboard {
     $surname = filter_input(INPUT_POST, 'surname');
     $age = (int)filter_input(INPUT_POST, 'age');
 
-    require_once("model/user.php");
-    require_once("model/userCollection.php");
-    require_once("model/config.php");
+    require_once("model/domainRepository.php");
 
-    $userCollection = userCollectionFactory::create($mapper);
+    $userCollection = new userRepository;
     $user = new user($name, $surname, $age);
-    $userCollection->save($user);
+    $userCollection->persist($user);
     
     header("location: http://fellowship/dashboard");
   }
   
   function deleteUser($id) {
-    require_once("model/user.php");
-    require_once("model/userCollection.php");
-    require_once("model/config.php");
+    require_once("model/domainRepository.php");
 
-    $userCollection = userCollectionFactory::create($mapper);
+    $userCollection = new userRepository;
     $userCollection->delete($id);
     
     header("location: http://fellowship/dashboard");

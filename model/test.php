@@ -1,7 +1,5 @@
 <?php
-require_once("user.php");
-require_once("userCollection.php");
-require_once("config.php");
+require_once("userRepository.php");
 
 echo "TEST USER: ";
 $name = "Giulio";
@@ -10,9 +8,9 @@ $age = 26;
 $userCollection = userCollectionFactory::create($mapper);
 $user = new user($name, $surname, $age);
 
-$userCollection->save($user);
+$userRepository->persist($user);
+$user = $userCollection->retrieve($user->getId());
 
-$user = $userCollection->load($user->getId());
 if ($user->getName() == $name and
     $user->getSurname() == $surname and
     $user->getAge() == $age)

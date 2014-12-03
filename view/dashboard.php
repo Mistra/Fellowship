@@ -6,12 +6,11 @@ class dashboardView {
   }
 
   function index() {
-    require_once("model/user.php");
-    require_once("model/userCollection.php");
-    require_once("model/config.php");
+    require_once("model/domainRepository.php");
 
-    $collection = userCollectionFactory::create("SQLite");
-    $usersArray = $collection->findAll();
+    $collection = new userRepository;
+    
+    $usersArray = $collection->retriveAll();
     
     include "view/index.html";
   }
