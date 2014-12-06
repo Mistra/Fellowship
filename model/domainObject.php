@@ -10,8 +10,8 @@ class objectFactory {
             $user->setId($data["id"]);
             return $user;
         }
-        }
         //case
+        }
     }
 }
 

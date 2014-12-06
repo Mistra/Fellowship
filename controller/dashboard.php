@@ -4,7 +4,7 @@ namespace app\controller;
 
 class dashboard {
   function __construct() {
-    require_once "view/dashboard.php";
+    require_once "view/dashboard/dashboard.php";
     $this->_view = new \app\view\dashboard;
   }
 

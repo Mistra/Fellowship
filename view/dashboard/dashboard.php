@@ -11,6 +11,8 @@ class dashboard {
     require_once("model/domainRepository.php");
     $collection = new \app\model\repository("user");
     $usersArray = $collection->retriveAll();
-    include "view/index.html";
+    include "view/header.html";
+    include "view/dashboard/index.html";
+    include "view/footer.html";
   }
 }

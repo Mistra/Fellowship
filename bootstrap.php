@@ -43,6 +43,7 @@ class bootstrap {
     $this->controller = "error";
     $this->method = "index";
     require_once("controller/" . $this->controller . ".php");
+    $this->controller = "app\\controller\\error"; //DA RIGUARDARE
   }
 
 }

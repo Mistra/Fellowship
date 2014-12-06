@@ -1,0 +1,26 @@
+<h1>FellowShip</h1>
+
+<table border="1px solid black" style="margin:auto">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Età</th>
+    </tr>
+    <?php foreach ($usersArray as $user): ?>
+        <tr>
+            <td><?=$user->getId()?></td>
+            <td><?=$user->getName()?></td>
+            <td><?=$user->getSurname()?></td>
+            <td><?=$user->getAge()?></td>
+            <td><a href="http://fellowship/dashboard/deleteUser/<?=$user->getId()?>">delete</a></td>
+        </tr>
+    <?php endforeach ?>
+</table>
+
+<form action="dashboard/insertUser" method="POST">
+    <input type="text" name="name"></input>
+    <input type="text" name="surname"></input>
+    <input type="number" name="age"></input>
+    <input type="submit" value="submit">
+</form>
