@@ -5,5 +5,4 @@ $settings = array(
 //Storage system used:
 //SQLite3, XML...
 "persistance" => "SQLite3",
-
 );
