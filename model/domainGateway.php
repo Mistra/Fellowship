@@ -1,16 +1,23 @@
 <?php
 
 namespace app\model;
+use \app\extra as extra;
 
 class gatewayFactory {
     static $storage = null;
+
     static function create($name) {
-        if (self::$storage == null) {
-            self::$storage = new \PDO('sqlite:messaging.sqlite3');
-            self::$storage->setAttribute(\PDO::ATTR_ERRMODE,
-                                         \PDO::ERRMODE_EXCEPTION);
+        require_once("extra/settings.php");
+        switch(extra\settings::get("persistance")) {
+            case "SQLite3": {
+                if (self::$storage == null) {
+                    self::$storage = new \PDO('sqlite:messaging.sqlite3');
+                    self::$storage->setAttribute(\PDO::ATTR_ERRMODE,
+                    \PDO::ERRMODE_EXCEPTION);
+                }
+                return new gatewaySQLite($name, self::$storage);
+            }
         }
-        return new gatewaySQLite($name, self::$storage);
     }
 }
 

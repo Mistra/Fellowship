@@ -6,9 +6,7 @@ class objectFactory {
     static function create($name, $data) {
         switch($name) {
         case "user": {
-            $user = new user($data["name"],
-                             $data["surname"],
-                             $data["age"]);
+            $user = new user($data["name"], $data["surname"], $data["age"]);
             $user->setId($data["id"]);
             return $user;
         }
@@ -34,10 +32,8 @@ abstract class abstractObject {
     }
 
     function setId($value) {
-        if ($value == null)
-            $this->_permanent = False;
-        else
-            $this->_permanent = True;
+        if ($value == null) $this->_permanent = False;
+        else $this->_permanent = True;
         $this->_id = $value;
     }
 
@@ -66,9 +62,10 @@ class user extends abstractObject implements domainObject {
     }
 
     function getData() {
-        return array("name" => $this->_name,
-                     "surname" => $this->_surname,
-                     "age" => $this->_age);
+        return array(
+            "name" => $this->_name,
+            "surname" => $this->_surname,
+            "age" => $this->_age);
     }
 
     private $_name;
