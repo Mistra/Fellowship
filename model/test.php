@@ -14,10 +14,10 @@ $user = $userCollection->retrieve($user->getId());
 if ($user->getName() == $name and
     $user->getSurname() == $surname and
     $user->getAge() == $age)
-  echo "OK" . PHP_EOL;
+    echo "OK" . PHP_EOL;
 else {
-  echo "FAIL" . PHP_EOL;
-  exit;
+    echo "FAIL" . PHP_EOL;
+    exit;
 }
 
 ?>

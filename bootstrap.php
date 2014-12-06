@@ -1,5 +1,7 @@
 <?php
 
+namespace app;
+
 class bootstrap {
 
   private $controller = NULL;
@@ -31,6 +33,9 @@ class bootstrap {
   public function check() {
     if (file_exists("controller/" . $this->controller . ".php")) {
       require_once("controller/" . $this->controller . ".php");
+      // Namespace of controller has to be included fully
+      // for method_exists and call_user_func_array
+      $this->controller = "app\\controller\\" . $this->controller;
       if (method_exists($this->controller, $this->method)) {
         return;
       }
