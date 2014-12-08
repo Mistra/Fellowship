@@ -6,12 +6,13 @@ require_once("domainGateway.php");
 
 class repository {
     private $objName;
-    
+    private $gateway;
+
     function __construct($objName) {
         $this->objName = $objName;
         $this->_gateway = gatewayFactory::create($this->objName);
     }
-    
+
     function persist($obj) {
         $data = $obj->getData();
         $id = $this->_gateway->persist($data);
@@ -24,7 +25,7 @@ class repository {
         $obj = objectFactory::create($this->objName, $data);
         return $obj;
     }
-    
+
     function retriveAll() {
         $data = $this->_gateway->retriveAll();
         $objArray = array();
@@ -33,10 +34,8 @@ class repository {
         }
         return $objArray;
     }
-    
+
     function delete($id) {
         $this->_gateway->delete($id);
     }
-    
-    private $gateway;
 }

@@ -67,7 +67,6 @@ class gatewaySQLite implements gateway{
         $string = "INSERT INTO " . $this->tableName .
             "(" . $this->insert . ")" .
             " VALUES (" . $this->valueNames . ")";
-        echo $string;
         $query = $this->db->prepare($string);
         $query->execute(array_values($dataArray));
         return $this->db->lastInsertId();
