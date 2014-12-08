@@ -20,13 +20,16 @@ class login {
 
       \app\model\autenticator::login($user);
 
-      header("location: http://fellowship/login");
+      //header("location: http://fellowship/login");
+      $this->view->index();
   }
 
   function logoutUser() {
 
       require_once("model/autenticator.php");
       \app\model\autenticator::logout();
-      header("location: http://fellowship/login");
+
+      //header("location: http://fellowship/login");
+      $this->view->index();
   }
 }

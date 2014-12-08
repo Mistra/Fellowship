@@ -13,12 +13,12 @@
             <td><?=$user->getName()?></td>
             <td><?=$user->getSurname()?></td>
             <td><?=$user->getAge()?></td>
-            <td><a href="http://fellowship/dashboard/deleteUser/<?=$user->getId()?>">delete</a></td>
+            <td><a href="<?= $baseUrl ?>/dashboard/deleteUser/<?=$user->getId()?>">delete</a></td>
         </tr>
     <?php endforeach ?>
 </table>
 
-<form action="dashboard/insertUser" method="POST">
+<form action="<?= $baseUrl ?>/dashboard/insertUser" method="POST">
     <input type="text" name="name"></input>
     <input type="text" name="surname"></input>
     <input type="number" name="age"></input>

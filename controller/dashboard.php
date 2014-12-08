@@ -23,7 +23,7 @@ class dashboard {
     $user = new \app\model\user($name, $surname, $age);
     $userCollection->persist($user);
 
-    header("location: http://fellowship/dashboard");
+    $this->_view->index();
   }
 
   function deleteUser($id) {
@@ -32,7 +32,8 @@ class dashboard {
     $userCollection = new \app\model\repository("user");
     $userCollection->delete($id);
 
-    header("location: http://fellowship/dashboard");
+    $this->_view->index();
+    //header("location: http://fellowship/dashboard");
   }
 
 }

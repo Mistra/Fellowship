@@ -9,6 +9,9 @@ class login {
     }
 
     public function index() {
+        require_once ("extra/settings.php");
+        $baseUrl = \app\settings::get("address");
+
         include "view/header.html";
 
         require_once("model/autenticator.php");

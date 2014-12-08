@@ -8,7 +8,7 @@ class gatewayFactory {
 
     static function create($name) {
         require_once("extra/settings.php");
-        switch(extra\settings::get("persistance")) {
+        switch(\app\settings::get("persistance")) {
             case "SQLite3": {
                 if (self::$storage == null) {
                     self::$storage = new \PDO('sqlite:messaging.sqlite3');

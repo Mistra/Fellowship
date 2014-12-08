@@ -2,14 +2,26 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="http://fellowship/view/css/main.css">
-    <link rel="stylesheet" type="text/css" href="http://fellowship/view/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="<?= $baseUrl ?>/view/css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?= $baseUrl ?>/view/css/menu.css">
 </head>
 <body>
     <div id='headmenu'>
         <ul>
-            <li><a href='http://fellowship'>Home</a></li>
-            <li><a href='http://fellowship/dashboard'>Dashboard</a></li>
-            <li><a href='http://fellowship/login'>Login</a></li>
+            <li>
+                <a href='<?= $baseUrl ?>'>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href='<?= $baseUrl ?>/dashboard'>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href='<?= $baseUrl ?>/login'>
+                    Login
+                </a>
+            </li>
         </ul>
     </div>

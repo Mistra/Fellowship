@@ -1,6 +1,6 @@
 <?php
 
-namespace app\extra;
+namespace app;
 
 class settings {
     private static $settings = null;
